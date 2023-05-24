@@ -26,6 +26,12 @@
                 console.error("qualcosa non va");
             });
             
+            axios.get(this.store.urlType).then(r=>{
+                this.store.types = r.data;
+                console.log(r.data)
+            });
+
+
         }
     }
 
