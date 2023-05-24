@@ -1,46 +1,47 @@
 <script>
+import { store } from '../store';
     export default{
-        name: "AppMain"
+        name: "AppMain",
+        data() {
+            return {
+                store
+            }
+        }
     }
 </script>
 
 
 <template>
-    <div class="conteiner">
-        <div class="nCards"> 
-            <div class="barraCards">
-                <p>Found 39 cards</p>
-                
-            </div>
+    <div class="conteinerCards">
+        <div v-for="card in store.cards" class="card">
+            <img :src="card.card_images[0].image_url" alt="">
+            <p> {{ card.name}} </p> 
         </div>
     </div>
 </template>
 
 <style  scoped>
-    .conteiner{
+    .conteinerCards{
         background-color: white;
-        height: 100vh;
+        min-height: 100vh;
         width: 80%;
         margin: 0 auto;    
         margin-top: 50px;
-    }
-    .nCards{
-        width: 90%;
-        min-height: 100px;
-        margin: 0 auto;
-    }
 
-    .barraCards{
-        background-color: black;
-        height: 100px;
         display: flex;
-        align-items: center;
+        flex-wrap: wrap;
+
     }
 
-    p{
-        color: white;
-        padding-left: 30px;
-        font-size: 2rem;
+    .card{
+        width: calc(100% / 6);
+        background-color: brown;
+        
     }
+
+    img{
+        width: 80%;
+    }
+    
 
 </style>
